@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "67828682785",
+    "firebase_url": "https://fragment-chat-app-default-rtdb.firebaseio.com",
+    "project_id": "fragment-chat-app",
+    "storage_bucket": "fragment-chat-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67828682785:android:d63fc3e482c7b72e711360",
+        "android_client_info": {
+          "package_name": "com.anviam.fragmentapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6fO5OrIhRMn2Ct2I1zUYNmQGyeOxZGJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

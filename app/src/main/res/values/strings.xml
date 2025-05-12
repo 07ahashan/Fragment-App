@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">FragmentApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="library">Library</string>
+    <string name="subscriptions">Subscriptions</string>
+    <string name="shorts">Shorts</string>
+    <string name="home">Home</string>
+    <string name="add_item">Add Item</string>
+    <string name="house">House</string>
+    <string name="sidebar">SideBar</string>
+    <string name="side_navigation_bar">Side Navigation Drawer</string>
+    <string name="header">Header</string>
+    <string name="register">Register</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="profile">Profile</string>
+    <string name="login">Login</string>
+    <string name="hello">Login</string>
+    <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="chat">Chat</string>
+    <string name="adduser">addUser</string>
+    <string name="history">History</string>
+    <string name="chatfragment">ChatFragment</string>
+    <string name="enter_message_here">Enter message here</string>
+    <string name="messenger1">Messenger1</string>
+    <string name="messenger2">Messenger2</string>
+    <string name="hello_how_are_you">Hello, how are you?</string>
+    <string name="add_user">Add User</string>
+    <string name="logout">Logout</string>
+    <string name="dates_and_time">Dates and Time</string>
+    <string name="google_map">Google Map</string>
+    <string name="zoom_out">Zoom Out</string>
+    <string name="zoom_in">Zoom In</string>
+    <string name="search_here">Search here</string>
+    <string name="satellite">Satellite</string>
+    <string name="terrain">Terrain</string>
+    <string name="datepicker">DatePicker</string>
+    <string name="select_date">SELECT DATE</string>
+    <string name="select_time">SELECT TIME</string>
+</resources>
