@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/edit_background"
         android:padding="10dp"
+        android:inputType="date"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toStartOf="@+id/btn_date"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +35,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_background"
         android:padding="10dp"
+        android:inputType="time"
         app:layout_constraintEnd_toStartOf="@+id/btn_time"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/in_date" />

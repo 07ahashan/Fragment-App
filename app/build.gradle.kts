@@ -89,6 +89,7 @@ dependencies {
     //google map dependency
     implementation ("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.maps.android:android-maps-utils:3.10.0")
+    implementation ("com.google.android.gms:play-services-location:21.2.0")
 
     //Coroutine Dependency
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
@@ -96,5 +97,8 @@ dependencies {
 // Adding Banner/ Image Slider into App
 //    implementation ("com.github.smarteist:autoimageslider:1.4.0")
 //    implementation("com.github.bumptech.glide:glide:4.11.0")
+
+    implementation ("com.google.android.material:material:1.11.0")
+
 
 }

@@ -6,11 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
@@ -41,7 +39,7 @@ class DateAndTimePickerFragment : Fragment(), TimePickerDialog.OnTimeSetListener
         }
 
         btnDate?.setOnClickListener {
-            showDatePicker()
+             showDatePicker()
         }
 
         return view
@@ -65,19 +63,19 @@ class DateAndTimePickerFragment : Fragment(), TimePickerDialog.OnTimeSetListener
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerDialog = DatePickerDialog(requireContext(), this, year, month, day)
-    // To set the minimum date of Calender
+        val datePickerDialog = DatePickerDialog(requireContext(),  R.style.SpinnerDatePickerDialogTheme,this, year, month, day)
+
+        // To set the minimum date of Calender
         datePickerDialog.datePicker.minDate = calendar.timeInMillis
         datePickerDialog.show()
     }
 
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-
-
+   override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int){
         calendar.set(Calendar.YEAR, year)
         calendar.set(Calendar.MONTH, month)
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         inDate?.text = dateFormat.format(calendar.time).toString()
-    }
+
+   }
 }

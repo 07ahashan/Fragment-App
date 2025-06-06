@@ -338,24 +338,49 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun hasGeofencePermission(): Boolean {
-        return ActivityCompat.checkSelfPermission(
+        val fineLocation = ActivityCompat.checkSelfPermission(
             requireContext(),
             Manifest.permission.ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED &&
-        ActivityCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.ACCESS_BACKGROUND_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
+        
+        // Check for background location permission on Android 10 and above
+        val backgroundLocation = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            true
+        }
+        
+        return fineLocation && backgroundLocation
     }
 
     private fun requestGeofencePermission() {
-        requestPermissions(
-            arrayOf(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION
-            ),
-            locationPermissionRequestCode
-        )
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            // First request only ACCESS_FINE_LOCATION
+            if (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissions(
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    locationPermissionRequestCode
+                )
+            } else {
+                // If FINE_LOCATION is granted, request BACKGROUND_LOCATION
+                requestPermissions(
+                    arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION),
+                    locationPermissionRequestCode + 1
+                )
+            }
+        } else {
+            requestPermissions(
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                locationPermissionRequestCode
+            )
+        }
     }
 
     override fun onRequestPermissionsResult(

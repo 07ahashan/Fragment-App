@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Amount per Gallon -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount per Gallon:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAmountPerGallon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="$3.35"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!-- Delivery Date -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delivery Date:"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDeliveryDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Apr 10, 2025"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!-- Preferred Delivery Time -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Preferred Delivery Time:"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerDeliveryTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@android:drawable/btn_dropdown" />
+
+    <!-- Additional Notes -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Additional Notes"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etAdditionalNotes"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:drawable/edit_text"
+        android:gravity="top"
+        android:padding="8dp" />
+
+    <!-- Fuel Door Status -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Is your fuel door locked or unlocked?"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <RadioGroup
+        android:id="@+id/rgFuelDoorStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbLocked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Locked" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbUnlocked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unlocked" />
+    </RadioGroup>
+
+    <!-- Additional Tire Inspection -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Are you requesting an additional tire inspection for this delivery?"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <RadioGroup
+        android:id="@+id/rgTireInspection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Yes" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No" />
+    </RadioGroup>
+
+    <!-- Gate Code -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Provide Gate Code (if applicable)"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etGateCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@android:drawable/edit_text"
+        android:padding="8dp" />
+
+    <!-- Payment Type -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Payment Type"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPaymentType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Credit Card"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
