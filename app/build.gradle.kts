@@ -17,26 +17,47 @@ android {
         applicationId = "com.anviam.fragmentapp"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1
+        versionCode = 101
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled = true
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-
-        getByName("release") {
-            configure<CrashlyticsExtension> {
+            configure<com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension> {
                 nativeSymbolUploadEnabled = true
             }
+        }
+
+        debug {
+            isDebuggable = true
+            isMinifyEnabled = false
+        }
+    }
+
+    flavorDimensions += "version"
+
+    productFlavors {
+        create("freeFragmentApp") {
+            dimension = "version"
+            applicationIdSuffix = ".free"
+            versionNameSuffix = "-free"
+            manifestPlaceholders["applicationId"] = "com.anviam.fragmentapp"
+        }
+
+        create("paidFragmentApp") {
+            dimension = "version"
+            applicationIdSuffix = ".paid"
+            versionNameSuffix = "-paid"
+            manifestPlaceholders["applicationId"] = "com.anviam.fragmentapp"
         }
     }
 
@@ -53,6 +74,28 @@ android {
         dataBinding = true
         viewBinding = true
     }
+
+    // Add this to ensure Firebase uses the base package name
+//    applicationVariants.all {
+//        val variant = this
+//        variant.outputs.all {
+//            val output = this
+//            output.processManifestProvider.configure {
+//                doLast {
+//                    val manifestDirectory = output.manifestDirectory.get().asFile
+//                    val manifestFile = File(manifestDirectory, "AndroidManifest.xml")
+//                    if (manifestFile.exists()) {
+//                        val manifestContent = manifestFile.readText()
+//                        val updatedContent = manifestContent.replace(
+//                            "package=\"com.anviam.fragmentapp${variant.flavorName?.let { ".$it" } ?: ""}\"",
+//                            "package=\"com.anviam.fragmentapp\""
+//                        )
+//                        manifestFile.writeText(updatedContent)
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
 dependencies {
@@ -87,18 +130,13 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics-ndk:18.6.2")
 
     //google map dependency
-    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.maps.android:android-maps-utils:3.10.0")
-    implementation ("com.google.android.gms:play-services-location:21.2.0")
+    implementation("com.google.android.gms:play-services-location:21.2.0")
 
-    //Coroutine Dependency
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    // Coroutine Dependency
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-// Adding Banner/ Image Slider into App
-//    implementation ("com.github.smarteist:autoimageslider:1.4.0")
-//    implementation("com.github.bumptech.glide:glide:4.11.0")
-
-    implementation ("com.google.android.material:material:1.11.0")
-
-
+    // Material Design
+    implementation("com.google.android.material:material:1.11.0")
 }
