@@ -32,9 +32,7 @@
             android:name=".FuelManMapActivity"
             android:exported="false" />
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCfGE5CaC6NMJFpOwzN42PVi5DDR6_bJZ4" />
+        // I have just remove the Google map API for the security purpose 
 
         <activity
             android:name=".chatApp.ChatActivity"
