@@ -1,11 +1,10 @@
-import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     kotlin("plugin.serialization") version "2.0.21"
     alias(libs.plugins.google.gms.google.services)
     id("com.google.firebase.crashlytics")
+    id("kotlin-kapt")
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
@@ -50,14 +49,12 @@ android {
             dimension = "version"
             applicationIdSuffix = ".free"
             versionNameSuffix = "-free"
-            manifestPlaceholders["applicationId"] = "com.anviam.fragmentapp"
         }
 
         create("paidFragmentApp") {
             dimension = "version"
             applicationIdSuffix = ".paid"
             versionNameSuffix = "-paid"
-            manifestPlaceholders["applicationId"] = "com.anviam.fragmentapp"
         }
     }
 
@@ -75,32 +72,11 @@ android {
         viewBinding = true
     }
 
-    // Add this to ensure Firebase uses the base package name
-//    applicationVariants.all {
-//        val variant = this
-//        variant.outputs.all {
-//            val output = this
-//            output.processManifestProvider.configure {
-//                doLast {
-//                    val manifestDirectory = output.manifestDirectory.get().asFile
-//                    val manifestFile = File(manifestDirectory, "AndroidManifest.xml")
-//                    if (manifestFile.exists()) {
-//                        val manifestContent = manifestFile.readText()
-//                        val updatedContent = manifestContent.replace(
-//                            "package=\"com.anviam.fragmentapp${variant.flavorName?.let { ".$it" } ?: ""}\"",
-//                            "package=\"com.anviam.fragmentapp\""
-//                        )
-//                        manifestFile.writeText(updatedContent)
-//                    }
-//                }
-//            }
-//        }
-//    }
 }
 
 dependencies {
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
+    implementation ("androidx.appcompat:appcompat:1.7.0")
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
@@ -114,6 +90,15 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
+
+    
     val nav_version = "2.8.9"
     implementation("androidx.navigation:navigation-fragment:$nav_version")
     implementation("androidx.navigation:navigation-ui:$nav_version")
@@ -136,7 +121,12 @@ dependencies {
 
     // Coroutine Dependency
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
 
     // Material Design
     implementation("com.google.android.material:material:1.11.0")
+
+    //Lottie Design
+    implementation ("com.airbnb.android:lottie:6.4.0")
+
 }

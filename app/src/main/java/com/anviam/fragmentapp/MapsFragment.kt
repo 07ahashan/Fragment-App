@@ -91,7 +91,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
         // Enable location and fetch origin
         binding?.mapProgressBar?.visibility = View.VISIBLE
+        binding?.mapProgressBar?.playAnimation()
         enableMyLocation()
+        binding?.mapProgressBar?.cancelAnimation()
         binding?.mapProgressBar?.visibility = View.GONE
 
         // Add map click listener for geofence creation
@@ -144,6 +146,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         val searchedPlace = binding?.etSearch?.text?.toString()?.trim()
         if (!searchedPlace.isNullOrEmpty()) {
             binding?.mapProgressBar?.visibility = View.VISIBLE
+            binding?.mapProgressBar?.playAnimation()
             lifecycleScope.launch {
                 try {
                     destLatLng = withContext(Dispatchers.IO) {
@@ -161,6 +164,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                 } catch (e: Exception) {
                     Toast.makeText(context, "Error searching location: ${e.message}", Toast.LENGTH_SHORT).show()
                 } finally {
+                    binding?.mapProgressBar?.cancelAnimation()
                     binding?.mapProgressBar?.visibility = View.GONE
                 }
             }

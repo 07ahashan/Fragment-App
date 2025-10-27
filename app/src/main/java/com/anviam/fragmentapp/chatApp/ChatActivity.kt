@@ -6,6 +6,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.anviam.fragmentapp.R
 import com.anviam.fragmentapp.databinding.ActivityChatBinding
+import android.content.Intent
+import com.anviam.fragmentapp.CaptureImage
 
 class ChatActivity : AppCompatActivity() {
 
@@ -27,6 +29,7 @@ class ChatActivity : AppCompatActivity() {
                 R.id.i_addUser -> navController.navigate(R.id.addUserFragment)
                 R.id.i_history -> navController.navigate(R.id.historyFragment)
                 R.id.i_chat -> navController.navigate(R.id.chatFragment)
+                R.id.i_captureImage -> startActivity(Intent(this, CaptureImage::class.java))
             }
             true
         }
