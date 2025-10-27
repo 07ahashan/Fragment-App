@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
@@ -103,7 +104,9 @@ class CaptureImage : AppCompatActivity() {
 
     private fun openGalleryPicker() {
         // Android 13+ Photo Picker needs no permission. Below 13, PickVisualMedia also avoids permissions.
-        pickMedia.launch(ActivityResultContracts.PickVisualMedia.ImageOnly)
+        pickMedia.launch(
+            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+        )
     }
 
     private fun createImageUri(): Uri? {

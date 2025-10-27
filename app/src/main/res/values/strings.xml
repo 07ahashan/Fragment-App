@@ -45,8 +45,7 @@
     <string name="generate_pdf">Generate PDF</string>
     <string name="fuelman_map">FuelMan_Map</string>
 
-    <!-- TEMP: Hugging Face token (consider using a secure mechanism in production) -->
-    <string name="hf_token">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</string>
+
 
     <string-array name="delivery_times">
         <item>8 : 00 AM</item>
